@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ConverterPixel.MainPage"
+             Padding="0">
+
+    <StackLayout Margin="0"
+                 Padding="20"
+                 x:Name="stackLayout">
+
+        <StackLayout VerticalOptions="CenterAndExpand"
+                     HorizontalOptions="Center">
+
+            <Label HorizontalTextAlignment="Center"
+                   Margin="0,0,0,60">
+
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+
+                            <Span x:Name="labelResult"
+                                  Text="38.57142"
+                                  FontSize="40"/>
+
+                            <Span Text=" dps"/>
+
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+
+            </Label>
+
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+
+                <Label Text="Pixel:"
+                       VerticalTextAlignment="Center"/>
+
+                <Entry x:Name="entryInputPixel"
+                       Text="30"
+                       FontSize="40"
+                       WidthRequest="80"
+                       TextChanged="Entry_TextChanged_2"/>
+
+            </StackLayout>
+
+            <StackLayout HorizontalOptions="Center"
+                         Margin="0,40,0,0">
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Width "
+                           VerticalTextAlignment="Center"/>
+
+                    <RadioButton x:Name="switcher"
+                                 IsChecked="True"
+                                 GroupName="sort"
+                                 CheckedChanged="switch_CheckedChanged"/>
+
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+
+                    <Label Text="Height"
+                           VerticalTextAlignment="Center"/>
+
+                    <RadioButton IsChecked="False" 
+                                 GroupName="sort"/>
+
+                </StackLayout>
+
+            </StackLayout>
+
+        </StackLayout>
+
+        <StackLayout VerticalOptions="EndAndExpand">
+
+            <StackLayout Orientation="Horizontal">
+
+                <Label Text="Width layout in pixel:"
+                       FontSize="16"
+                       VerticalTextAlignment="Center"/>
+
+                <Entry x:Name="entryWidthLayout"
+                       Text="320"
+                       WidthRequest="80"
+                       TextChanged="Entry_TextChanged_1"/>
+
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+
+                <Label Text="Height layout in pixel:"
+                       FontSize="16"
+                       VerticalTextAlignment="Center"/>
+
+                <Entry x:Name="entryHeightLayout" 
+                       Text="568"
+                       WidthRequest="80"
+                       TextChanged="Entry_TextChanged"/>
+
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal"
+                         Margin="0, 20,0,0">
+
+                <Label FontSize="16">
+
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Width device: "/>
+                                <Span Text="{Binding Source={x:Reference stackLayout}, Path=Width, StringFormat='{0:F3}'}"/>
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+
+                </Label>
+
+                <Label FontSize="16"
+                       HorizontalOptions="EndAndExpand">
+
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Height device: "/>
+                                <Span Text="{Binding Source={x:Reference stackLayout}, Path=Height, StringFormat='{0:F3}'}"/>
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+
+                </Label>
+
+            </StackLayout>
+
+        </StackLayout>
+
+    </StackLayout>
+
+</ContentPage>
