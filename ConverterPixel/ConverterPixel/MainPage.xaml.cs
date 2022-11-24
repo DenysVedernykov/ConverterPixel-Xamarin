@@ -1,20 +1,43 @@
-﻿using Xamarin.Forms;
-using Xamarin.Forms.PlatformConfiguration;
-using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+﻿using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace ConverterPixel
 {
-    public partial class MainPage : ContentPage
+	public partial class MainPage : ContentPage
     {
         public MainPage()
         {
-            On<iOS>().SetUseSafeArea(true);
-
             InitializeComponent();
+
+            calc();
         }
 
         private void calc()
         {
+            // Get Metrics
+            var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
+
+            // Orientation (Landscape, Portrait, Square, Unknown)
+            var orientation = mainDisplayInfo.Orientation;
+
+            // Rotation (0, 90, 180, 270)
+            var rotation = mainDisplayInfo.Rotation;
+
+            // Width (in pixels)
+            var width = mainDisplayInfo.Width;
+
+            // Height (in pixels)
+            var height = mainDisplayInfo.Height;
+
+            // Screen density
+            var density = mainDisplayInfo.Density;
+
+            widthInPixel.Text = "Width device (Pixel): " + width;
+            heightInPixel.Text = "Height device (Pixel): " + height;
+            densityLabel.Text = "Density: " + density;
+            
+            deviceInfoLabel.Text = $"{DeviceInfo.DeviceType} | {DeviceInfo.Platform} | {DeviceInfo.Idiom} | {DeviceInfo.Manufacturer} | {DeviceInfo.Model} | {DeviceInfo.Name} | {DeviceInfo.Version}";
+
             double sample;
 
             var deviceWidth = stackLayout.Width;
@@ -45,7 +68,6 @@ namespace ConverterPixel
 
                     labelResult.Text = tmp.Length > 8 ? tmp.Substring(0, 8) : tmp;
                 }
-
             }
         }
 
@@ -68,5 +90,5 @@ namespace ConverterPixel
         {
             calc();
         }
-    }
+	}
 }
